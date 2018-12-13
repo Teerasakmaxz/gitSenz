@@ -1,0 +1,48 @@
+<!--
+  Generated template for the DisplayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar color="danger">
+        <button ion-button menuToggle>
+          <ion-icon  name="ios-menu"></ion-icon>
+        </button>
+        <ion-title>{{name}}</ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+        <ion-refresher (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+              </ion-refresher-content>
+              </ion-refresher>
+             
+    <div *ngFor="let chat of date">
+        <ion-grid>
+            <ion-row>
+                <p class="textdate">{{chat}}</p>
+            </ion-row>
+            <ion-row *ngFor="let datachat of data[chat]">
+                <ion-col col-2>
+                    <p class="texttime">{{datachat.logtime}}</p>
+                </ion-col>
+                <ion-col col-10>
+ 
+                    <p class="textmes">
+                        {{datachat.logneed}}<br>
+                        {{datachat.logtrans}} 
+                    </p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

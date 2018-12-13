@@ -1,1 +1,57 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar color="danger">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="onLoad(p)">
+				<ion-grid>
+					<ion-row>
+							
+						<ion-col class="colstyle" col-2>
+								<img src="{{p.icon}}"item-left/>
+						</ion-col>
+						<ion-col class="colstyle" col-10>
+							<div style="margin-top: 16px">
+                                    <strong [innerHtml]="p.title"></strong>
+                            </div>
+						</ion-col>
+					</ion-row>
+					
+				
+				</ion-grid>
+            </button>
+            
+          
+
+        </ion-list>
+
+
+        <button ion-button color="danger" (click)="logOut()">
+            <ion-grid>
+                    <ion-row>
+                            <ion-col col-2 class="mid">
+                                     <div class="imgsize">
+                                            <img src ='assets/icon/logout.svg'/>  
+                                    </div>
+                            </ion-col>       
+                            <ion-col col-3>
+                                    <div class = "coursesize1">
+                                    Sign out
+                                    </div>
+                                
+                           </ion-col>
+                    </ion-row>
+                
+            </ion-grid>
+        </button>
+
+    
+
+
+    </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

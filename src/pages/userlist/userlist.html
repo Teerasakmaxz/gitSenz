@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar color="danger">
+        <button ion-button menuToggle>
+          <ion-icon  name="menu"></ion-icon>
+        </button>
+        <ion-title>User Online </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+      </ion-refresher>
+    <ion-list>
+
+        <ion-item ion-item *ngFor="let itemsUser of itemsUserOnline" (click)="nav(itemsUser)">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+        <img class = "imgsize" src="{{itemsUser.image}}"/>
+      </ion-col>
+      <ion-col col-5>
+        <h4 class="textsize">{{itemsUser.name}}</h4>
+        <p class="textsize">{{itemsUser.onStart}}</p>
+      </ion-col>
+      <ion-col col-2 class="pic">
+         <img *ngIf="itemsUser.online == 'online';else offline" class="imgsize1" src="assets/imgs/online.png"/>
+         <ng-template #offline >
+          <img class="imgsize1" src="assets/imgs/away.png"/>
+         </ng-template>
+      </ion-col>
+      <ion-col col-3>
+        <h4 class="status">{{itemsUser.online}}</h4>
+      </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    </ion-list>
+</ion-content>
